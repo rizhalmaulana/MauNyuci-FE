@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">MauNyuciBeta</string>
+    <string name="title_beranda">Beranda</string>
+    <string name="title_order">Order</string>
+    <string name="title_layanan">Layanan</string>
+    <string name="title_akun">Akun</string>
+    <string name="todo">TODO</string>
+    <string name="email_no_hp">Email/No Hp</string>
+    <string name="masukkan_email_no_hp">Masukkan Email / No Hp</string>
+    <string name="masukkan_password">Masukkan Password</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="belum_punya_akun">Belum Punya Akun?&#160;</string>
+    <string name="daftar_disini">Daftar Disini</string>
+    <string name="nama_laundry">Nama Laundry</string>
+    <string name="alamat">Alamat</string>
+    <string name="masukkan_alamat">Masukkan Alamat</string>
+    <string name="buat_laundry_sekarang">Buat Laundry Sekarang</string>
+    <string name="daftar_laundry">Daftar Laundry</string>
+    <string name="sepertinya_kamu_tidak_terkoneksi">Sepertinya Kamu Tidak Terkoneksi</string>
+    <string name="opps_koneksimu_terputus_nih">Opps, koneksimu terputus nih!</string>
+    <string name="sepertinya_kamu_tidak_terkoneksi_dengan_internet_coba_cek_lagi_yuk">Sepertinya kamu tidak terkoneksi dengan internet, coba cek lagi yuk</string>
+    <string name="muat_ulang">Muat Ulang</string>
+    <string name="label_selamat_datang">Selamat datang,</string>
+    <string name="label_message_help_default">Halo,</string>
+    <string name="bagikan_dengan">Bagikan Dengan</string>
+    <string name="label_whatsapp_not_installed">Whatsapp belum terinstal</string>
+    <string name="label_copyrigth">2021 | SP2K Mobile Team</string>
+    <string name="label_masukan_email_yang_terdaftar">Masukan email yang terdaftar</string>
+    <string name="label_format_email_tidak_sesuai">Format email tidak sesuai</string>
+    <string name="label_masukan_akun_yang_sudah_terdaftar">Masukan akun yang sudah terdaftar</string>
+    <string name="label_anda_belum_bergabung_yuk_gabung_natau_login_sekarang">Anda belum bergabung, yuk gabung\natau login sekarang</string>
+    <string name="masukkan_no_handphone">Masukkan No Handphone</string>
+    <string name="daftar_akun">Daftar Akun</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="daftar">Daftar</string>
+</resources>

@@ -1,0 +1,293 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MauNyuciBeta" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ImageViewLoader">
+        <item name="android:layout_width">230dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:contentDescription">@string/todo</item>
+    </style>
+
+    <style name="TextAppearance.MdcTypographyStyles.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/outfit_regular</item>
+        <item name="android:fontFamily">@font/outfit_regular</item>
+        <item name="android:textSize">96sp</item>
+    </style>
+    <style name="TextAppearance.MdcTypographyStyles.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/outfit_regular</item>
+        <item name="android:fontFamily">@font/outfit_regular</item>
+        <item name="android:textSize">60sp</item>
+    </style>
+    <style name="TextAppearance.MdcTypographyStyles.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/outfit_regular</item>
+        <item name="android:fontFamily">@font/outfit_regular</item>
+        <item name="android:textSize">48sp</item>
+    </style>
+    <style name="TextAppearance.MdcTypographyStyles.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/outfit_medium</item>
+        <item name="android:fontFamily">@font/outfit_medium</item>
+        <item name="android:textSize">34sp</item>
+    </style>
+    <style name="TextAppearance.MdcTypographyStyles.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/outfit_medium</item>
+        <item name="android:fontFamily">@font/outfit_medium</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="TextAppearance.MdcTypographyStyles.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/outfit_medium</item>
+        <item name="android:fontFamily">@font/outfit_medium</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="TextAppearance.MdcTypographyStyles.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/outfit_medium</item>
+        <item name="android:fontFamily">@font/outfit_medium</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="TextAppearance.MdcTypographyStyles.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/outfit_medium</item>
+        <item name="android:fontFamily">@font/outfit_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="TextAppearance.MdcTypographyStyles.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/outfit_medium</item>
+        <item name="android:fontFamily">@font/outfit_medium</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="TextAppearance.MdcTypographyStyles.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/outfit_medium</item>
+        <item name="android:fontFamily">@font/outfit_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="TextAppearance.MdcTypographyStyles.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/outfit_medium</item>
+        <item name="android:fontFamily">@font/outfit_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="TextAppearance.MdcTypographyStyles.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/outfit_medium</item>
+        <item name="android:fontFamily">@font/outfit_medium</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="TextAppearance.MdcTypographyStyles.Overline" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="fontFamily">@font/outfit_medium</item>
+        <item name="android:fontFamily">@font/outfit_medium</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar"/>
+
+    <style name="TextHeading">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="TextTitle">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextTitleBold">
+        <item name="fontFamily">@font/open_sans_bold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextTitleSmall">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextSubheader">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextLabel">
+        <item name="fontFamily">@font/open_sans_bold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextQuote">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textFontWeight" tools:targetApi="p">300</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextPlaceholder">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textFontWeight" tools:targetApi="p">300</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextBodyLarge">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextBodyMedium">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextSemiBoldMedium">
+        <item name="fontFamily">@font/open_sans_bold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextBodyRegular">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextBodyRegularBold">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextBodySmall">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextSemiBoldSmall">
+        <item name="fontFamily">@font/open_sans_bold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextBodySmallItalic">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextBodyXSmall">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="TextBodyVerySmall">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:textSize">8sp</item>
+    </style>
+
+    <style name="TextBodyError" parent="TextBodySmall">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+    </style>
+
+    <style name="TextTitleLowLevelAPI">
+        <item name="fontFamily">@font/open_sans_bold</item>
+    </style>
+
+    <style name="TextBodyLowLevelAPI">
+        <item name="fontFamily">@font/open_sans_bold</item>
+    </style>
+
+    <style name="TextBoldSmallLowLevelAPI">
+        <item name="fontFamily">@font/open_sans_bold</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextBoldMediumLowLevelAPI">
+        <item name="fontFamily">@font/open_sans_bold</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextBoldRegularLowLevelAPI">
+        <item name="fontFamily">@font/open_sans_bold</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextBoldLargeLowLevelAPI">
+        <item name="fontFamily">@font/open_sans_bold</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextBodyCustom">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextTitleLogin">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textFontWeight" tools:targetApi="p">900</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextSemiBold">
+        <item name="fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="TextBold">
+        <item name="fontFamily">@font/open_sans_bold</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="TextExtraBold">
+        <item name="fontFamily">@font/open_sans_extra_bold</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="TextItalic">
+        <item name="fontFamily">@font/open_sans_italic</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="TextLight">
+        <item name="fontFamily">@font/open_sans_light</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="TextMedium">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="TextThin">
+        <item name="fontFamily">@font/open_sans_light</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+</resources>
