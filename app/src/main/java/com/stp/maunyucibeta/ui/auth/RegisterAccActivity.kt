@@ -18,7 +18,7 @@ class RegisterAccActivity : AppCompatActivity() {
         setContentView(bindingRegister.root)
 
         bindingRegister.btnDaftarAkun.setOnClickListener {
-            moveActivity(Intent(this@RegisterAccActivity, MainActivity::class.java), R.anim.anim_slide_in_right, R.anim.anim_slide_out_left)
+            moveActivity(Intent(this@RegisterAccActivity, MainActivity::class.java), R.anim.fade_in, R.anim.fade_out)
         }
 
         bindingRegister.ivBackAcc.setOnClickListener {

@@ -1,14 +1,14 @@
 package com.stp.maunyucibeta
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.stp.maunyucibeta.databinding.ActivityMainBinding
+import com.stp.maunyucibeta.ui.akun.AkunFragment
+import com.stp.maunyucibeta.ui.beranda.BerandaFragment
+import com.stp.maunyucibeta.ui.layanan.LayananFragment
+import com.stp.maunyucibeta.ui.order.OrderFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,17 +20,42 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupClickListener()
+        loadFragment(BerandaFragment())
+    }
+
+    private fun loadFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.container, fragment)
+            .commit()
+    }
+
+
+    private fun setupClickListener() {
         val navView: BottomNavigationView = binding.navView
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_beranda, R.id.navigation_order, R.id.navigation_layanan, R.id.navigation_akun
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        navView.setOnItemSelectedListener {
+            val fragment = when (it.itemId) {
+                R.id.navigation_beranda -> {
+                    BerandaFragment()
+                }
+                R.id.navigation_order -> {
+                    OrderFragment()
+                }
+                R.id.navigation_layanan -> {
+                    LayananFragment()
+                }
+                R.id.navigation_akun -> {
+                    AkunFragment()
+                }
+                else -> {
+                    BerandaFragment()
+                }
+            }
+
+            loadFragment(fragment)
+            true
+        }
     }
 }
