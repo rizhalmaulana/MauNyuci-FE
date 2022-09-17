@@ -3,7 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
-apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -41,6 +42,7 @@ android {
 dependencies {
     def lifecycle_version = "2.4.1"
     def room_version = "2.2.3"
+    def hilt_version = "2.38.1"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
@@ -53,6 +55,12 @@ dependencies {
 
     // Lottie
     implementation "com.airbnb.android:lottie:3.4.0"
+
+    // Skeleton
+    implementation 'com.faltenreich:skeletonlayout:4.0.0'
+
+    // Shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
     // ViewModel & LiveData
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
@@ -68,11 +76,16 @@ dependencies {
     // Bottomsheets
     implementation 'com.afollestad.material-dialogs:bottomsheets:3.3.0'
 
+    // Zelory Compresor
+    implementation 'id.zelory:compressor:3.0.1'
+
     // Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
-    //implementation project(':compressor')
-    implementation 'id.zelory:compressor:3.0.1'
+    // Dagger Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    kapt 'androidx.hilt:hilt-compiler:1.0.0'
 
     // Room
     implementation "androidx.room:room-runtime:$room_version"
@@ -94,6 +107,9 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.13.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
+
+    // CircleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'

@@ -9,7 +9,6 @@ import com.stp.maunyucibeta.R
 import com.stp.maunyucibeta.base.CoreFragment
 import com.stp.maunyucibeta.databinding.BlockingPageBinding
 import com.stp.maunyucibeta.transition.TransitionType
-import kotlinx.android.synthetic.main.view_toobar_blocking_page.view.*
 
 class BlockingFragment : CoreFragment<BlockingPageBinding>(), FragmentHelper<Unit> {
 

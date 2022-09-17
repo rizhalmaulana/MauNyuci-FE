@@ -16,6 +16,7 @@
     <color name="colorPurple_700">#FF3700B3</color>
     <color name="colorTeal_200">#FF03DAC5</color>
     <color name="colorTeal_700">#FF018786</color>
+    <color name="colorShimmer">#D3D3D3</color>
 
     <color name="colorWhite">#fff</color>
     <color name="colorWhite_orange">#FFFBF6</color>

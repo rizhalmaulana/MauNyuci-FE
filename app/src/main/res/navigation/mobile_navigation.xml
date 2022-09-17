@@ -18,14 +18,15 @@
         tools:layout="@layout/fragment_order" />
 
     <fragment
+        android:id="@+id/navigation_layanan"
+        android:name="com.stp.maunyucibeta.ui.layanan.LayananFragment"
+        android:label="@string/title_layanan"
+        tools:layout="@layout/fragment_layanan" />
+
+    <fragment
         android:id="@+id/navigation_akun"
         android:name="com.stp.maunyucibeta.ui.akun.AkunFragment"
         android:label="@string/title_akun"
         tools:layout="@layout/fragment_akun" />
 
-    <fragment
-        android:id="@+id/navigation_layanan"
-        android:name="com.stp.maunyucibeta.ui.layanan.LayananFragment"
-        android:label="@string/title_layanan"
-        tools:layout="@layout/fragment_layanan" />
 </navigation>

@@ -34,4 +34,14 @@
     <string name="daftar_akun">Daftar Akun</string>
     <string name="nama_lengkap">Nama Lengkap</string>
     <string name="daftar">Daftar</string>
+    <string name="omset_hari_ini">Omset Hari Ini</string>
+    <string name="rp">Rp</string>
+    <string name="tambah_order">Tambah Order</string>
+    <string name="selesai">Selesai</string>
+    <string name="masuk">Masuk</string>
+    <string name="siap_ambil">Siap Ambil</string>
+    <string name="tunggu_sebentar_yaa">Tunggu Sebentar Yaa ...</string>
+    <string name="pendapatanmu_mengingkat_hari_ini">Pendapatanmu mengingkat hari ini?</string>
+    <string name="star_notice">*</string>
+    <string name="profile">Profile</string>
 </resources>

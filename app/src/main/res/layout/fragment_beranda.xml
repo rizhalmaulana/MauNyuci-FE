@@ -1,24 +1,343 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.beranda.BerandaFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/text_home"
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModelBeranda"
+            type="com.stp.maunyucibeta.ui.beranda.BerandaViewModel" />
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Beranda Fragment"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/ns_beranda"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/header_orange"
+                        android:contentDescription="@string/todo" />
+
+                    <LinearLayout
+                        android:id="@+id/lr_info_beranda"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/margin_30">
+
+                        <LinearLayout
+                            android:layout_width="250dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/txt_nama_laundry"
+                                style="@style/TextTitleBold"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:hint="@string/nama_laundry"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/colorWhite"
+                                android:textColorHint="@color/colorWhite"
+                                android:textSize="16sp" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/TextBodyMedium"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_5"
+                                android:text="@string/pendapatanmu_mengingkat_hari_ini"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/colorWhite"
+                                android:textColorHint="@color/colorWhite"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/civ_foto_profil"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@drawable/ic_avatar"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:civ_border_width="1dp"
+                            app:civ_border_color="@color/colorWhite"/>
+
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_omset"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_20"
+                        android:layout_marginEnd="@dimen/margin_20"
+                        android:layout_marginBottom="@dimen/margin_10"
+                        android:layout_below="@id/lr_info_beranda"
+                        android:background="@color/colorWhite"
+                        app:cardCornerRadius="@dimen/margin_10">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/margin_15">
+
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:stretchColumns="1">
+
+                                <TableRow>
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        style="@style/TextBodyRegularBold"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:text="@string/omset_hari_ini"
+                                        android:textColor="@color/colorBlack"
+                                        android:textSize="14sp" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        style="@style/TextBold"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="end"
+                                        android:text="@string/rp"
+                                        android:textColor="@color/colorBlack"
+                                        android:textSize="11sp" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/txt_omset_today"
+                                        style="@style/TextBold"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:hint="2.000.000"
+                                        android:textColor="@color/colorBlack"
+                                        android:textColorHint="@color/colorBlack"
+                                        android:textSize="14sp" />
+
+                                </TableRow>
+
+                            </TableLayout>
+
+                            <LinearLayout
+                                android:layout_width="325dp"
+                                android:layout_height="1dp"
+                                android:layout_gravity="center_vertical|center_horizontal"
+                                android:layout_marginTop="@dimen/margin_15"
+                                android:layout_marginBottom="@dimen/margin_10"
+                                android:background="@color/colorShimmer"
+                                android:orientation="vertical" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:weightSum="3"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="start|center_vertical"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/iv_masuk"
+                                        android:layout_width="@dimen/margin_30"
+                                        android:layout_height="@dimen/margin_30"
+                                        android:contentDescription="@string/todo"
+                                        app:srcCompat="@drawable/ic_masuk"
+                                        tools:ignore="TooDeepLayout" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_5"
+                                        android:orientation="vertical">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:id="@+id/txt_omset_masuk"
+                                            style="@style/TextSemiBold"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="start|center_vertical"
+                                            android:text="@string/masuk"
+                                            android:textColor="@color/colorBlack"
+                                            android:textSize="11sp"
+                                            tools:ignore="TooDeepLayout" />
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:id="@+id/txt_value_masuk"
+                                            style="@style/TextSemiBold"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="start|center_vertical"
+                                            android:hint="50"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textColorHint="@color/colorPrimary"
+                                            android:textSize="14sp" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal|center_vertical"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/iv_siap_ambil"
+                                        android:layout_width="@dimen/margin_30"
+                                        android:layout_height="@dimen/margin_30"
+                                        android:contentDescription="@string/todo"
+                                        app:srcCompat="@drawable/ic_siapambil" />
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_5"
+                                        android:orientation="vertical">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:id="@+id/txt_omset_siapambil"
+                                            style="@style/TextSemiBold"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center_horizontal"
+                                            android:text="@string/siap_ambil"
+                                            android:textAlignment="center"
+                                            android:textColor="@color/colorBlack"
+                                            android:textSize="11sp" />
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:id="@+id/txt_value_siapambil"
+                                            style="@style/TextSemiBold"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center_horizontal"
+                                            android:hint="100"
+                                            android:textAlignment="center"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textColorHint="@color/colorPrimary"
+                                            android:textSize="14sp" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="end|center_vertical"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/iv_selesai"
+                                        android:layout_width="@dimen/margin_30"
+                                        android:layout_height="@dimen/margin_30"
+                                        android:contentDescription="@string/todo"
+                                        app:srcCompat="@drawable/ic_done" />
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_5"
+                                        android:orientation="vertical">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:id="@+id/txt_omset_selesai"
+                                            style="@style/TextSemiBold"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="start|center_vertical"
+                                            android:text="@string/selesai"
+                                            android:textColorHint="@color/colorBlack"
+                                            android:textSize="11sp" />
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:id="@+id/txt_value_selesai"
+                                            style="@style/TextSemiBold"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="start|center_vertical"
+                                            android:hint="600"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textColorHint="@color/colorPrimary"
+                                            android:textSize="14sp" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:id="@+id/lr_tambar_order"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cv_omset"
+                        android:layout_marginStart="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_20"
+                        android:layout_marginEnd="@dimen/margin_20"
+                        android:background="@drawable/button_gradient"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/margin_15">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:contentDescription="@string/todo"
+                            app:srcCompat="@drawable/ic_tambah" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextSemiBold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_10"
+                            android:gravity="start"
+                            android:text="@string/tambah_order"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </RelativeLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</layout>

@@ -25,9 +25,7 @@ class SplashScreenActivity : AppCompatActivity() {
         activityScope.launch {
             delay(4000)
 
-            startActivity(Intent(this@SplashScreenActivity, LoginActivity::class.java))
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
-            finish()
+            goToNextDestination(Intent(applicationContext, LoginActivity::class.java))
         }
 
         bindingSplash = ActivitySplashScreenBinding.inflate(layoutInflater)
@@ -37,6 +35,12 @@ class SplashScreenActivity : AppCompatActivity() {
         Glide.with(applicationContext)
             .load(R.raw.laundry)
             .into(bindingSplash.imgAnimation)
+    }
+
+    private fun goToNextDestination(intent: Intent) {
+        startActivity(intent)
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        finish()
     }
 
     companion object {

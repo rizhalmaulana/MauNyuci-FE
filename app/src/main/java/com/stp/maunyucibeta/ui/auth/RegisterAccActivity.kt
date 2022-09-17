@@ -18,28 +18,28 @@ class RegisterAccActivity : AppCompatActivity() {
         setContentView(bindingRegister.root)
 
         bindingRegister.btnDaftarAkun.setOnClickListener {
-            moveActivity(Intent(this@RegisterAccActivity, MainActivity::class.java), R.anim.fade_in, R.anim.fade_out)
+            moveActivity(Intent(this@RegisterAccActivity, MainActivity::class.java))
         }
 
         bindingRegister.ivBackAcc.setOnClickListener {
-            onBackPressed()
+            backActivity(Intent(this@RegisterAccActivity, RegisterStoreActivity::class.java))
         }
     }
 
-    private fun moveActivity(intent: Intent, transitionIn: Int, transitionOut: Int) {
+    private fun moveActivity(intent: Intent) {
         startActivity(intent)
-        overridePendingTransition(transitionIn, transitionOut)
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         finish()
     }
 
-    private fun backActivity(intent: Intent, transitionIn: Int, transitionOut: Int) {
+    private fun backActivity(intent: Intent) {
         startActivity(intent)
-        overridePendingTransition(transitionIn, transitionOut)
+        overridePendingTransition(R.anim.exit_to_right, R.anim.enter_from_left)
         finish()
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        backActivity(Intent(this@RegisterAccActivity, RegisterStoreActivity::class.java), R.anim.exit_to_right, R.anim.enter_from_left)
+        backActivity(Intent(this@RegisterAccActivity, RegisterStoreActivity::class.java), )
     }
 }

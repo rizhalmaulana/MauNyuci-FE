@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.stp.maunyucibeta.R
 import com.stp.maunyucibeta.databinding.ActivityRegisterStoreBinding
 
-
 class RegisterStoreActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterStoreBinding
@@ -18,28 +17,28 @@ class RegisterStoreActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnDaftarLaundry.setOnClickListener {
-            moveActivity(Intent(this@RegisterStoreActivity, RegisterAccActivity::class.java), R.anim.enter_from_right, R.anim.exit_to_left)
+            moveActivity(Intent(this@RegisterStoreActivity, RegisterAccActivity::class.java))
         }
 
         binding.ivBackStore.setOnClickListener {
-            onBackPressed()
+            backActivity(Intent(this@RegisterStoreActivity, LoginActivity::class.java))
         }
     }
 
-    private fun moveActivity(intent: Intent, transitionIn: Int, transitionOut: Int) {
+    private fun moveActivity(intent: Intent) {
         startActivity(intent)
-        overridePendingTransition(transitionIn, transitionOut)
+        overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left)
         finish()
     }
 
-    private fun backActivity(intent: Intent, transitionIn: Int, transitionOut: Int) {
+    private fun backActivity(intent: Intent) {
         startActivity(intent)
-        overridePendingTransition(transitionIn, transitionOut)
+        overridePendingTransition(R.anim.exit_to_right, R.anim.enter_from_left)
         finish()
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        backActivity(Intent(this@RegisterStoreActivity, LoginActivity::class.java), R.anim.exit_to_right, R.anim.enter_from_left)
+        backActivity(Intent(this@RegisterStoreActivity, LoginActivity::class.java))
     }
 }

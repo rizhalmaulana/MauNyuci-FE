@@ -59,8 +59,4 @@ abstract class BaseViewModel() : ViewModel() {
         return gson.fromJson(json, clazz)
     }
 
-//    fun updateUniqueUser() {
-//        authenticationRepository.currentUser()?.uid?.let { analyticsRepository.setUniqueUser(it) }
-//    }
-
 }

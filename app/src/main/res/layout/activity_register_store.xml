@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,23 +10,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/margin_20"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_20">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_back_store"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
-            android:background="@drawable/ic_back"
-            android:contentDescription="@string/todo" />
+            android:background="@drawable/ripple"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="@string/todo"
+            app:srcCompat="@drawable/ic_back" />
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/TextLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/daftar_laundry"
             android:layout_marginStart="@dimen/margin_15"
+            android:text="@string/daftar_laundry"
             android:textColor="@color/colorBlack" />
 
     </LinearLayout>
@@ -55,6 +59,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:background="@drawable/ic_add_photo"
+                android:clickable="true"
+                android:focusable="true"
                 android:contentDescription="@string/todo" />
 
         </FrameLayout>
@@ -86,13 +92,13 @@
                     android:text="@string/nama_laundry"
                     android:textColor="@color/colorBlack" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/margin_5"
-                    android:contentDescription="@string/todo"
-                    android:background="@drawable/ic_required" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextBodyMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_3"
+                    android:text="@string/star_notice"
+                    android:textColor="@color/colorCancel" />
 
             </LinearLayout>
 
@@ -151,7 +157,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_15"
                     android:layout_weight="3"
-                    android:background="@android:color/transparent"
+                    android:background="@drawable/ripple"
                     android:hint="@string/masukkan_alamat"
                     android:inputType="textMultiLine"
                     android:lineSpacingMultiplier="1"
@@ -178,6 +184,8 @@
             android:layout_height="40dp"
             android:layout_margin="@dimen/margin_20"
             android:background="@drawable/button_gradient"
+            android:clickable="true"
+            android:focusable="true"
             android:fontFamily="@font/open_sans_semi_bold"
             android:text="@string/buat_laundry_sekarang"
             android:textAllCaps="false"
