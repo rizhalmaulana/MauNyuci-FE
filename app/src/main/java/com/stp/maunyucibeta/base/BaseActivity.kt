@@ -10,6 +10,7 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
+import androidx.core.text.HtmlCompat
 import androidx.databinding.ViewDataBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.stp.maunyucibeta.R
@@ -38,28 +39,6 @@ abstract class BaseActivity<binding : ViewDataBinding> : CoreActivity<binding>()
         }
     }
 
-    fun showError(exception: Exception?, action: (() -> Unit)? = null) {
-        exception?.let {
-            it.message?.let { message ->
-                showError(
-                    it,
-                    message,
-                    ContextCompat.getDrawable(this, R.drawable.header_orange),
-                    action
-                )
-            }
-        }
-    }
-
-    fun showError(exception: Exception?, message: CharSequence, action: (() -> Unit)? = null) {
-        showError(
-            exception,
-            message,
-            ContextCompat.getDrawable(this, R.drawable.header_orange),
-            action
-        )
-    }
-
     fun showError(
         exception: Exception?,
         message: CharSequence,
@@ -79,46 +58,16 @@ abstract class BaseActivity<binding : ViewDataBinding> : CoreActivity<binding>()
         }
     }
 
-    fun showDialog(
-        message: CharSequence,
-        drawable: Drawable? = null,
-        title: CharSequence? = "",
-        note: CharSequence? = "",
+    fun loadingDialog(
+        title: CharSequence,
+        cancelable: Boolean,
         action: (() -> Unit)? = null
-    ) = DialogUtils.showBasicAlertDialog(
+    ): Dialog = DialogUtils.loadingDialog(
         this,
-        drawable,
-        message,
         title,
-        note,
+        cancelable,
         action
     )
-
-//    fun showLoadingDialog(
-//        message: CharSequence,
-//        title: CharSequence,
-//        cancelable: Boolean,
-//        action: (() -> Unit)? = null
-//    ) = DialogUtils.showBasicLoadingDialog(
-//        this,
-//        message,
-//        title,
-//        cancelable,
-//        action
-//    )
-
-//    fun loadingDialog(
-//        message: CharSequence,
-//        title: CharSequence,
-//        cancelable: Boolean,
-//        action: (() -> Unit)? = null
-//    ): Dialog = DialogUtils.loadingDialog(
-//        this,
-//        message,
-//        title,
-//        cancelable,
-//        action
-//    )
 
     override fun setAppbarTitle(title: String) {
         toolbarTitle?.text = title
@@ -161,72 +110,11 @@ abstract class BaseActivity<binding : ViewDataBinding> : CoreActivity<binding>()
         return passwordHidden
     }
 
-//    fun showDialogOptionBottomSheet(
-//        description: String,
-//        yeButtonClick: (() -> Unit)? = null,
-//        noButtonClick: (() -> Unit)? = null,
-//        yesTitle: String? = "Ya",
-//        noTitle: String? = "Tidak",
-//    ) = DialogUtils.showDialogOptionBottomSheet(
-//        this,
-//        description,
-//        yesTitle,
-//        noTitle,
-//        yeButtonClick,
-//        noButtonClick
-//    )
-
-//    fun showMessageBottomSheet(
-//        description: String,
-//        cancelable: Boolean = true,
-//        yeButtonClick: (() -> Unit)? = null,
-//    ) = DialogUtils.showMessageBottomSheet(
-//        this,
-//        description,
-//        cancelable,
-//        yeButtonClick
-//    )
-
-//    fun showImageDialog(
-//        imageUrl: String,
-//        onButtonClick: (() -> Unit)? = null
-//    ) = DialogUtils.showImageDialog(
-//        this,
-//        imageUrl,
-//        onButtonClick
-//    )
-
-//    fun showImageBottomSheet(
-//        imageUrl: String,
-//        onButtonClick: (() -> Unit)? = null
-//    ) = DialogUtils.showImageBottomSheet(
-//        this,
-//        imageUrl,
-//        onButtonClick
-//    )
-
     fun fromHtml(htmlString: String): String {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             Html.fromHtml(htmlString, Html.TO_HTML_PARAGRAPH_LINES_INDIVIDUAL).toString()
         } else {
-            Html.fromHtml(htmlString).toString()
+            HtmlCompat.fromHtml(htmlString, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
         }
     }
-
-//    fun goToShowImageActivity(url: String) {
-//        startActivity(
-//            Intent(this, ShowImageActivity::class.java).apply {
-//                putExtra(ShowImageActivity.IMAGE_URL, url)
-//            }
-//        )
-//    }
-//
-//    fun goToWebViewActivity(url: String, title: String = "") {
-//        startActivity(
-//            Intent(this, WebViewActivity::class.java).apply {
-//                putExtra(WebViewActivity.KEY_URL, url)
-//                putExtra(WebViewActivity.KEY_TITLE, title)
-//            }
-//        )
-//    }
 }

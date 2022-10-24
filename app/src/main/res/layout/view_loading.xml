@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    app:cardCornerRadius="@dimen/margin_10"
+    android:padding="@dimen/margin_15">
 
     <LinearLayout
         android:id="@+id/lr_progressbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
+        android:gravity="center_horizontal|center_vertical"
         android:orientation="vertical"
-        tools:ignore="UselessParent">
+        android:padding="@dimen/margin_20">
 
         <com.airbnb.lottie.LottieAnimationView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="@dimen/margin_20"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="@dimen/margin_20"
-            android:layout_marginBottom="@dimen/margin_10"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/loading" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/view_loading_message"
             style="@style/TextTitleBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
             android:text="@string/tunggu_sebentar_yaa"
             android:textColor="@color/colorBlack"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 
-</RelativeLayout>
+</androidx.cardview.widget.CardView>

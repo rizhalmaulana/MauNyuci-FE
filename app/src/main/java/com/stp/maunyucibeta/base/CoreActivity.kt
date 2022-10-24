@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.text.Html
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextUtils
@@ -20,10 +19,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.pm.PackageInfoCompat
+import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.appbar.AppBarLayout
 import com.stp.maunyucibeta.R
@@ -55,7 +55,7 @@ abstract class CoreActivity<binding : ViewDataBinding> : AppCompatActivity(),
         }
         materialDialog = MaterialDialog(this)
             .message(null, "Loading...")
-            .cancelable(false);
+            .cancelable(false)
     }
 
     protected open fun setupActionBar(
@@ -81,9 +81,9 @@ abstract class CoreActivity<binding : ViewDataBinding> : AppCompatActivity(),
     }
 
     fun <T> LiveData<T>.observe(function: T.() -> Unit) {
-        this.observe(this@CoreActivity, Observer {
+        this.observe(this@CoreActivity) {
             function.invoke(it)
-        })
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -114,10 +114,11 @@ abstract class CoreActivity<binding : ViewDataBinding> : AppCompatActivity(),
 
     protected open fun getVersionCodeInfo(): String = try {
         val packageInfo = packageManager.getPackageInfo(packageName, 0)
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             packageInfo.longVersionCode.toString()
         } else {
-            packageInfo.versionCode.toString()
+            PackageInfoCompat.getLongVersionCode(packageInfo).toString()
         }
     } catch (e: PackageManager.NameNotFoundException) {
         e.printStackTrace()
@@ -166,10 +167,10 @@ abstract class CoreActivity<binding : ViewDataBinding> : AppCompatActivity(),
                 SpannableString("")
             }
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.N -> {
-                Html.fromHtml(html, Html.FROM_HTML_MODE_COMPACT)
+                HtmlCompat.fromHtml(html, HtmlCompat.FROM_HTML_MODE_COMPACT)
             }
             else -> {
-                Html.fromHtml(html)
+                HtmlCompat.fromHtml(html, HtmlCompat.FROM_HTML_MODE_LEGACY)
             }
         }
     }

@@ -2,7 +2,7 @@ package com.stp.maunyucibeta.data
 
 import com.stp.maunyucibeta.R
 import com.stp.maunyucibeta.model.DummyLayanan
-import com.stp.maunyucibeta.model.Layanan
+import com.stp.maunyucibeta.model.beranda.Menu
 
 object DummyData {
 
@@ -81,4 +81,28 @@ object DummyData {
         "(406) 555-0120",
         "(406) 555-0120"
     )
+
+    private val dummy_menu_beranda = arrayOf(
+        2000000,
+        50,
+        100,
+        60
+    )
+
+    val listDummyMenuBeranda: ArrayList<Menu>
+        get() {
+            val listMenu = ArrayList<Menu>()
+            for (i in dummy_menu_beranda.indices) {
+                val dataBeranda = Menu()
+
+                dataBeranda.omset = dummy_menu_beranda[i].toDouble()
+                dataBeranda.masuk = dummy_menu_beranda[i]
+                dataBeranda.ambil = dummy_menu_beranda[i]
+                dataBeranda.selesai = dummy_menu_beranda[i]
+
+                listMenu.add(dataBeranda)
+            }
+
+            return listMenu
+        }
 }

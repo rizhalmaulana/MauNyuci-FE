@@ -12,7 +12,7 @@
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_container"
+        android:id="@+id/swipe_container_beranda"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -86,225 +86,56 @@
 
                     </LinearLayout>
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cv_omset"
+                    <RelativeLayout
+                        android:id="@+id/rl_wrapper"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_20"
-                        android:layout_marginTop="@dimen/margin_20"
-                        android:layout_marginEnd="@dimen/margin_20"
-                        android:layout_marginBottom="@dimen/margin_10"
-                        android:layout_below="@id/lr_info_beranda"
-                        android:background="@color/colorWhite"
-                        app:cardCornerRadius="@dimen/margin_10">
+                        android:layout_below="@id/lr_info_beranda">
 
-                        <LinearLayout
+                        <com.facebook.shimmer.ShimmerFrameLayout
+                            android:id="@+id/shmr_layanan"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="@dimen/margin_15">
-
-                            <TableLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:stretchColumns="1">
-
-                                <TableRow>
-                                    <androidx.appcompat.widget.AppCompatTextView
-                                        style="@style/TextBodyRegularBold"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:text="@string/omset_hari_ini"
-                                        android:textColor="@color/colorBlack"
-                                        android:textSize="14sp" />
-
-                                    <androidx.appcompat.widget.AppCompatTextView
-                                        style="@style/TextBold"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_gravity="end"
-                                        android:text="@string/rp"
-                                        android:textColor="@color/colorBlack"
-                                        android:textSize="11sp" />
-
-                                    <androidx.appcompat.widget.AppCompatTextView
-                                        android:id="@+id/txt_omset_today"
-                                        style="@style/TextBold"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:hint="2.000.000"
-                                        android:textColor="@color/colorBlack"
-                                        android:textColorHint="@color/colorBlack"
-                                        android:textSize="14sp" />
-
-                                </TableRow>
-
-                            </TableLayout>
-
-                            <LinearLayout
-                                android:layout_width="325dp"
-                                android:layout_height="1dp"
-                                android:layout_gravity="center_vertical|center_horizontal"
-                                android:layout_marginTop="@dimen/margin_15"
-                                android:layout_marginBottom="@dimen/margin_10"
-                                android:background="@color/colorShimmer"
-                                android:orientation="vertical" />
+                            android:layout_height="match_parent">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:weightSum="3"
-                                android:orientation="horizontal">
+                                android:orientation="vertical">
 
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:gravity="start|center_vertical"
-                                    android:layout_weight="1"
-                                    android:orientation="horizontal">
-
-                                    <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/iv_masuk"
-                                        android:layout_width="@dimen/margin_30"
-                                        android:layout_height="@dimen/margin_30"
-                                        android:contentDescription="@string/todo"
-                                        app:srcCompat="@drawable/ic_masuk"
-                                        tools:ignore="TooDeepLayout" />
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="@dimen/margin_5"
-                                        android:orientation="vertical">
-
-                                        <androidx.appcompat.widget.AppCompatTextView
-                                            android:id="@+id/txt_omset_masuk"
-                                            style="@style/TextSemiBold"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:gravity="start|center_vertical"
-                                            android:text="@string/masuk"
-                                            android:textColor="@color/colorBlack"
-                                            android:textSize="11sp"
-                                            tools:ignore="TooDeepLayout" />
-
-                                        <androidx.appcompat.widget.AppCompatTextView
-                                            android:id="@+id/txt_value_masuk"
-                                            style="@style/TextSemiBold"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:gravity="start|center_vertical"
-                                            android:hint="50"
-                                            android:textColor="@color/colorPrimary"
-                                            android:textColorHint="@color/colorPrimary"
-                                            android:textSize="14sp" />
-
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1"
-                                    android:orientation="horizontal">
-
-                                    <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/iv_siap_ambil"
-                                        android:layout_width="@dimen/margin_30"
-                                        android:layout_height="@dimen/margin_30"
-                                        android:contentDescription="@string/todo"
-                                        app:srcCompat="@drawable/ic_siapambil" />
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="@dimen/margin_5"
-                                        android:orientation="vertical">
-
-                                        <androidx.appcompat.widget.AppCompatTextView
-                                            android:id="@+id/txt_omset_siapambil"
-                                            style="@style/TextSemiBold"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:gravity="center_horizontal"
-                                            android:text="@string/siap_ambil"
-                                            android:textAlignment="center"
-                                            android:textColor="@color/colorBlack"
-                                            android:textSize="11sp" />
-
-                                        <androidx.appcompat.widget.AppCompatTextView
-                                            android:id="@+id/txt_value_siapambil"
-                                            style="@style/TextSemiBold"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:gravity="center_horizontal"
-                                            android:hint="100"
-                                            android:textAlignment="center"
-                                            android:textColor="@color/colorPrimary"
-                                            android:textColorHint="@color/colorPrimary"
-                                            android:textSize="14sp" />
-
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:gravity="end|center_vertical"
-                                    android:layout_weight="1"
-                                    android:orientation="horizontal">
-
-                                    <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/iv_selesai"
-                                        android:layout_width="@dimen/margin_30"
-                                        android:layout_height="@dimen/margin_30"
-                                        android:contentDescription="@string/todo"
-                                        app:srcCompat="@drawable/ic_done" />
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="@dimen/margin_5"
-                                        android:orientation="vertical">
-
-                                        <androidx.appcompat.widget.AppCompatTextView
-                                            android:id="@+id/txt_omset_selesai"
-                                            style="@style/TextSemiBold"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:gravity="start|center_vertical"
-                                            android:text="@string/selesai"
-                                            android:textColorHint="@color/colorBlack"
-                                            android:textSize="11sp" />
-
-                                        <androidx.appcompat.widget.AppCompatTextView
-                                            android:id="@+id/txt_value_selesai"
-                                            style="@style/TextSemiBold"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:gravity="start|center_vertical"
-                                            android:hint="600"
-                                            android:textColor="@color/colorPrimary"
-                                            android:textColorHint="@color/colorPrimary"
-                                            android:textSize="14sp" />
-
-                                    </LinearLayout>
-
-                                </LinearLayout>
+                                <include layout="@layout/view_shimmer_beranda" />
 
                             </LinearLayout>
-                        </LinearLayout>
 
-                    </androidx.cardview.widget.CardView>
+                        </com.facebook.shimmer.ShimmerFrameLayout>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_omset"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_20"
+                            android:layout_marginEnd="@dimen/margin_20"
+                            android:layout_marginBottom="@dimen/margin_10"
+                            android:background="@color/colorWhite"
+                            android:visibility="gone"
+                            app:cardCornerRadius="@dimen/margin_10">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_omset"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                tools:listitem="@layout/view_item_omset"
+                                tools:itemCount="1" />
+
+                        </androidx.cardview.widget.CardView>
+
+                    </RelativeLayout>
 
                     <LinearLayout
                         android:id="@+id/lr_tambar_order"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/cv_omset"
+                        android:layout_below="@id/rl_wrapper"
                         android:layout_marginStart="@dimen/margin_20"
                         android:layout_marginTop="@dimen/margin_20"
                         android:layout_marginEnd="@dimen/margin_20"

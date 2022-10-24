@@ -24,4 +24,13 @@
     <dimen name="margin_90">90dp</dimen>
     <dimen name="margin_95">95dp</dimen>
     <dimen name="margin_100">100dp</dimen>
+
+    <dimen name="size_text_3">3sp</dimen>
+    <dimen name="size_text_5">5sp</dimen>
+    <dimen name="size_text_10">10sp</dimen>
+    <dimen name="size_text_15">15sp</dimen>
+    <dimen name="size_text_20">20sp</dimen>
+    <dimen name="size_text_25">25sp</dimen>
+    <dimen name="size_text_30">30sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

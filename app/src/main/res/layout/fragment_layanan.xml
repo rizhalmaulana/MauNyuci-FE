@@ -25,7 +25,7 @@
                 android:id="@+id/rl_toolbar_layanan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/margin_15">
+                android:padding="@dimen/margin_20">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -36,19 +36,11 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/TextTitleBold"
-                        android:layout_width="300dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/margin_15"
                         android:text="@string/title_layanan"
                         android:textColor="@color/colorBlack"
                         android:textSize="18sp" />
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/iv_search_layanan"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/todo"
-                        app:srcCompat="@drawable/ic_search" />
 
                 </LinearLayout>
 
@@ -71,6 +63,41 @@
                         android:orientation="vertical"
                         android:padding="@dimen/margin_10">
 
+                        <LinearLayout
+                            android:id="@+id/lr_search_layanan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_10"
+                            android:background="@drawable/border_default"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/iv_search_layanan"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="@dimen/margin_15"
+                                android:alpha="0.6"
+                                android:contentDescription="@string/todo"
+                                android:src="@drawable/ic_search"
+                                app:tint="@color/colorBlack_main" />
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_search_layanan"
+                                style="@style/TextMedium"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:background="@android:color/transparent"
+                                android:hint="Cari Layanan"
+                                android:inputType="textAutoCorrect"
+                                android:lines="1"
+                                android:textSize="14sp"
+                                tools:ignore="HardcodedText" />
+
+                        </LinearLayout>
+
                         <com.facebook.shimmer.ShimmerFrameLayout
                             android:id="@+id/shmr_layanan"
                             android:layout_width="match_parent"
@@ -81,13 +108,13 @@
                                 android:layout_height="match_parent"
                                 android:orientation="vertical">
 
-                                <include layout="@layout/view_shimmer" />
+                                <include layout="@layout/view_shimmer_layanan" />
 
-                                <include layout="@layout/view_shimmer" />
+                                <include layout="@layout/view_shimmer_layanan" />
 
-                                <include layout="@layout/view_shimmer" />
+                                <include layout="@layout/view_shimmer_layanan" />
 
-                                <include layout="@layout/view_shimmer" />
+                                <include layout="@layout/view_shimmer_layanan" />
 
                             </LinearLayout>
 

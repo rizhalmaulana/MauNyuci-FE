@@ -24,4 +24,8 @@
     <color name="colorBlack">#000</color>
     <color name="colorBlack_main">#3C3F41</color>
     <color name="colorBlack_sub">#5A5959</color>
+
+    <color name="colorWait">#F44336</color>
+    <color name="colorProces">#FF9800</color>
+    <color name="colorDone">#4CAF50</color>
 </resources>

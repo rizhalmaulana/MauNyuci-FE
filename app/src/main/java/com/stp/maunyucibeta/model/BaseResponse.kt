@@ -7,6 +7,8 @@ data class BaseResponse<T>(
     val state: Boolean = false,
     @field:SerializedName("message")
     val message: String = "",
+    @field:SerializedName("error")
+    val error: String = "",
     @field:SerializedName("data")
     val data: T? = null,
 )

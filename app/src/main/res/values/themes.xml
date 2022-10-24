@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="Theme.MauNyuciBeta.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.MauNyuciBeta.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MauNyuciBeta.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

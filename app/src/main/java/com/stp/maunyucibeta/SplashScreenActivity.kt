@@ -1,49 +1,50 @@
 package com.stp.maunyucibeta
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.viewModels
 import com.bumptech.glide.Glide
+import com.stp.maunyucibeta.base.BaseActivity
 import com.stp.maunyucibeta.databinding.ActivitySplashScreenBinding
+import com.stp.maunyucibeta.ui.auth.AuthViewModel
 import com.stp.maunyucibeta.ui.auth.LoginActivity
+import com.stp.maunyucibeta.utils.Constants
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
+class SplashScreenActivity : BaseActivity<ActivitySplashScreenBinding>() {
 
-@SuppressLint("CustomSplashScreen")
-class SplashScreenActivity : AppCompatActivity() {
-
-    private lateinit var bindingSplash: ActivitySplashScreenBinding
+    private val authViewModel by viewModels<AuthViewModel>()
     private val activityScope = CoroutineScope(Dispatchers.Main)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun getLayoutId(): Int = R.layout.activity_splash_screen
 
+    override fun ActivitySplashScreenBinding.initializeView(savedInstanceState: Bundle?) {
         activityScope.launch {
-            delay(4000)
-
-            goToNextDestination(Intent(applicationContext, LoginActivity::class.java))
+            delay(Constants.SPLASH_SCREEN_DELAY_DURATION)
+            if (authViewModel.isAnonymous()) {
+                goToNextDestination(
+                    Intent(applicationContext, LoginActivity::class.java)
+                )
+            } else {
+                goToNextDestination(
+                    Intent(applicationContext, MainActivity::class.java)
+                )
+            }
         }
 
-        bindingSplash = ActivitySplashScreenBinding.inflate(layoutInflater)
-        setContentView(bindingSplash.root)
-
-        bindingSplash.imgAnimation
         Glide.with(applicationContext)
             .load(R.raw.laundry)
-            .into(bindingSplash.imgAnimation)
+            .into(binding.imgAnimation)
     }
 
     private fun goToNextDestination(intent: Intent) {
         startActivity(intent)
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         finish()
-    }
-
-    companion object {
-        private const val TAG = "SplashScreenActivity"
     }
 }

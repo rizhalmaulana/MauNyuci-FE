@@ -36,16 +36,58 @@
                 android:textColor="@color/colorBlack_main"
                 android:textSize="18sp" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_item_opsi_layanan"
-                style="@style/TextBodyRegular"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cuci >> Kering >> Setrika"
                 android:layout_marginTop="@dimen/margin_5"
-                android:textAlignment="textStart"
-                android:textColor="@color/colorBlack_sub"
-                android:textSize="12sp" />
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_item_opsi_cuci"
+                    style="@style/TextBodyRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Cuci "
+                    android:textAlignment="textStart"
+                    android:textColor="#949494"
+                    android:textSize="12sp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_arrow_right_first"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:contentDescription="@string/todo"
+                    app:srcCompat="@drawable/ic_arrow_right" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_item_opsi_kering"
+                    style="@style/TextBodyRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Kering "
+                    android:textAlignment="textStart"
+                    android:textColor="#949494"
+                    android:textSize="12sp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_arrow_right_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:contentDescription="@string/todo"
+                    app:srcCompat="@drawable/ic_arrow_right" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_item_opsi_setrika"
+                    style="@style/TextBodyRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Setrika "
+                    android:textAlignment="textStart"
+                    android:textColor="#949494"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
