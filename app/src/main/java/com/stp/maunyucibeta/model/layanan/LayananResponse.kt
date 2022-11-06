@@ -1,12 +1,9 @@
 package com.stp.maunyucibeta.model.layanan
 
-import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class LayananResponse(
-    @SerializedName("data")
-    val `data`: List<Layanan>,
-    @SerializedName("message")
-    val message: String,
-    @SerializedName("state")
+    val `data`: List<Layanan>?,
+    val message: String? = "",
     val state: Boolean
-)
+): Serializable

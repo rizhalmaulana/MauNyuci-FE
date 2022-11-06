@@ -3,6 +3,7 @@ package com.stp.maunyucibeta.repository
 import com.stp.maunyucibeta.model.BaseResponse
 import com.stp.maunyucibeta.model.auth.Login
 import com.stp.maunyucibeta.model.layanan.Layanan
+import com.stp.maunyucibeta.model.layanan.LayananResponse
 import retrofit2.Call
 import javax.inject.Inject
 

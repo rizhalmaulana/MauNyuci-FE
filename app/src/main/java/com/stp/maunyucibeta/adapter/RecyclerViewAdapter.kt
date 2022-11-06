@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
-import com.stp.maunyucibeta.model.layanan.SubLayanan
 
 class RecyclerViewAdapter<T, B : ViewDataBinding>(
     var list: List<T>,
@@ -20,7 +18,6 @@ class RecyclerViewAdapter<T, B : ViewDataBinding>(
             LayoutInflater.from(parent.context),
             layout_id, parent, false
         )
-
         return RecyclerViewHolder(binding)
     }
 
@@ -36,6 +33,7 @@ class RecyclerViewAdapter<T, B : ViewDataBinding>(
         return list.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateList(newMenuList: List<T>) {
         list = newMenuList
         notifyDataSetChanged()

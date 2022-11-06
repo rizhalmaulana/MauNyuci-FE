@@ -1,16 +1,27 @@
 package com.stp.maunyucibeta.ui.layanan
 
-import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.stp.maunyucibeta.base.BaseViewModel
-import com.stp.maunyucibeta.exception.GeneralException
+import com.stp.maunyucibeta.data.UserRepository
+import com.stp.maunyucibeta.helper.Event
 import com.stp.maunyucibeta.model.layanan.Layanan
+import com.stp.maunyucibeta.model.layanan.SubLayanan
 import com.stp.maunyucibeta.repository.RemoteRepository
+import com.stp.maunyucibeta.utils.PreferenceManager
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.net.ConnectException
+import javax.inject.Inject
 
-class LayananViewModel(private val remoteRepository: RemoteRepository) : BaseViewModel() {
+@HiltViewModel
+class LayananViewModel @Inject constructor(
+    private val remoteRepository: RemoteRepository,
+    private val userRepository: UserRepository,
+    private val preferenceManager: PreferenceManager,
+) :
+    BaseViewModel() {
 
     private val _loading: MutableLiveData<Boolean> by lazy {
         MutableLiveData(false)
@@ -23,7 +34,12 @@ class LayananViewModel(private val remoteRepository: RemoteRepository) : BaseVie
     val layanan: LiveData<MutableList<Layanan>?>
         get() = _layanan
 
+    private val _statusMessage = MutableLiveData<Event<String>>()
+    val message: LiveData<Event<String>>
+        get() = _statusMessage
+
     fun resetState() {
+        _layanan.value = arrayListOf()
         setError(null)
     }
 
@@ -31,23 +47,23 @@ class LayananViewModel(private val remoteRepository: RemoteRepository) : BaseVie
         _loading.value = true
         try {
             val response = remoteRepository.getLayanan()
-            if (response.state && response.data != null) {
-                _loading.value = false
+            if (response.state) {
+                val listLayanan: MutableList<Layanan> = arrayListOf()
+                response.data?.let { listLayanan.addAll(it) }
 
-                val listLayanan = mutableListOf<Layanan>()
-                listLayanan.addAll(response.data)
                 _layanan.value = listLayanan
-
+                _loading.value = false
             } else {
                 _loading.value = false
                 _layanan.value = null
-                showError(GeneralException(response.message))
+                _statusMessage.value = Event("Kamu gagal dapatkan data layanan, coba lagi!")
             }
         } catch (exception: Exception) {
             _loading.value = false
-            showError(exception)
+            _statusMessage.value = Event("Yah, gagal dapatkan layanan. Coba lagi!")
+        } catch (exceptionInet: ConnectException) {
+            _loading.value = false
+            _statusMessage.value = Event("Yah, gagal dapatkan layanan. Cek koneksimu!")
         }
-
     }
-
 }

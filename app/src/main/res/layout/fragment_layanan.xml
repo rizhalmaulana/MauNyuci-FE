@@ -3,15 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <import type="android.view.View" />
-
-        <variable
-            name="viewModelLayanan"
-            type="com.stp.maunyucibeta.ui.layanan.LayananViewModel" />
-    </data>
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swpe_layanan"
         android:layout_width="match_parent"
@@ -124,8 +115,7 @@
                             android:id="@+id/rv_layanan"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:visibility="gone"
-                            tools:listitem="@layout/view_item_layanan" />
+                            tools:listitem="@layout/view_item_layanan"/>
 
                     </LinearLayout>
 
@@ -153,7 +143,8 @@
                         app:backgroundTint="@color/colorPrimaryDark"
                         app:fabSize="auto"
                         app:srcCompat="@drawable/ic_add"
-                        app:tint="@color/colorWhite" />
+                        app:tint="@color/colorWhite"
+                        android:contentDescription="@string/todo" />
 
                 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

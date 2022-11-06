@@ -92,16 +92,14 @@ object DummyData {
     val listDummyMenuBeranda: ArrayList<Menu>
         get() {
             val listMenu = ArrayList<Menu>()
-            for (i in dummy_menu_beranda.indices) {
-                val dataBeranda = Menu()
+            val dataBeranda = Menu()
 
-                dataBeranda.omset = dummy_menu_beranda[i].toDouble()
-                dataBeranda.masuk = dummy_menu_beranda[i]
-                dataBeranda.ambil = dummy_menu_beranda[i]
-                dataBeranda.selesai = dummy_menu_beranda[i]
+            dataBeranda.omset = dummy_menu_beranda[0]
+            dataBeranda.masuk = dummy_menu_beranda[1]
+            dataBeranda.ambil = dummy_menu_beranda[2]
+            dataBeranda.selesai = dummy_menu_beranda[3]
 
-                listMenu.add(dataBeranda)
-            }
+            listMenu.add(dataBeranda)
 
             return listMenu
         }

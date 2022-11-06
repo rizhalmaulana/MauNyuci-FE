@@ -15,20 +15,21 @@ import com.stp.maunyucibeta.helper.Event
 import com.stp.maunyucibeta.helper.Static
 import com.stp.maunyucibeta.model.auth.Login
 import com.stp.maunyucibeta.repository.RemoteRepository
-import com.stp.maunyucibeta.repository.ResourceRepository
+import com.stp.maunyucibeta.utils.Constants
 import com.stp.maunyucibeta.utils.PreferenceManager
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.net.ConnectException
 import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
     private val remoteRepository: RemoteRepository,
     private val userRepository: UserRepository,
-    private val resourceRepository: ResourceRepository,
     private val preferenceManager: PreferenceManager,
 ) : BaseViewModel() {
 
@@ -83,6 +84,7 @@ class AuthViewModel @Inject constructor(
 
     fun resetState() {
         setError(null)
+        _isValid.value = false
         _loading.value = false
         _login.value = null
         _loginError.value = null
@@ -100,12 +102,22 @@ class AuthViewModel @Inject constructor(
                     _emailValue.value = this
                     setText(emailValue.value)
 
-                    validEmailorHp = Static.isValidEmail(inputEmailFormat.text?.trim().toString())
-                    _hideErrorEmailFormat.value = validEmailorHp
+                    validEmailorHp = Static.isNumberPhone(inputEmailFormat.text?.trim().toString())
+                    if (validEmailorHp) {
+                        _hideErrorEmailFormat.value = validEmailorHp
 
-                    _isValid.value = validEmailorHp && validPasswordFormat
-                    Selection.setSelection(inputEmailFormat.text, length())
-                    onChangedDisabled = false
+                        _isValid.value = validEmailorHp && validPasswordFormat
+                        Selection.setSelection(inputEmailFormat.text, length())
+                        onChangedDisabled = false
+                    } else {
+                        validEmailorHp = Static.isValidEmail(inputEmailFormat.text?.trim().toString())
+
+                        _hideErrorEmailFormat.value = validEmailorHp
+
+                        _isValid.value = validEmailorHp && validPasswordFormat
+                        Selection.setSelection(inputEmailFormat.text, length())
+                        onChangedDisabled = false
+                    }
                 }
             }
         }
@@ -129,6 +141,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    @SuppressLint("LogNotTimber")
     fun fetchLogin(map: HashMap<String, String>) = viewModelScope.launch {
         _loading.value = true
         try {
@@ -142,7 +155,6 @@ class AuthViewModel @Inject constructor(
                         if (userState == true) {
                             viewModelScope.launch {
                                 try {
-
                                     userBody.apply {
                                         val outletId = this.data.outlet.outlet_id
                                         val outletUtama = this.data.outlet.outlet_utama
@@ -174,17 +186,17 @@ class AuthViewModel @Inject constructor(
 
                                 } catch (exception: IllegalAccessException) {
                                     _loading.value = false
-                                    _statusMessage.value = Event(response.errorBody().toString())
+                                    _statusMessage.value = Event("Yah, login gagal. Silahkan coba lagi!")
                                 }
                             }
 
                         } else {
                             _loading.value = false
-                            _statusMessage.value = Event(response.errorBody().toString())
+                            _statusMessage.value = Event("Email atau password kamu salah. Coba cek kembali!")
                         }
                     } else {
                         _loading.value = false
-                        _statusMessage.value = Event(response.errorBody().toString())
+                        _statusMessage.value = Event("Yah, login gagal. Silahkan coba lagi!")
                     }
                 }
 
@@ -193,11 +205,12 @@ class AuthViewModel @Inject constructor(
                     _statusMessage.value = Event(t.message.toString())
                 }
             })
-            _loading.value = false
-
         } catch (exception: Exception) {
             _loading.value = false
-            _statusMessage.value = Event("Yah, login gagal nih!! Coba lagi yuk.")
+            _statusMessage.value = Event("Yah, login gagal. Silahkan coba lagi.")
+        } catch (exceptionInet: ConnectException) {
+            _loading.value = false
+            _statusMessage.value = Event("Yah, login gagal. Coba cek koneksimu!")
         }
     }
 
@@ -207,23 +220,16 @@ class AuthViewModel @Inject constructor(
 
     @SuppressLint("LogNotTimber")
     fun insert(user: UserData) = viewModelScope.launch {
-        val rowInsertId: Long = userRepository.insertUser(user)
+        delay(Constants.LOGIN_DELAY_DURATION)
 
-        if (rowInsertId > -1) {
-            _login.value = user
+        _login.value = user
 
-            //Save to preference store
-            preferenceManager.saveUser(user)
-            preferenceManager.saveLogin(true)
+        //Save to preference store
+        preferenceManager.saveUser(user)
+        preferenceManager.saveLogin(true)
+        user.access_token?.let { preferenceManager.setToken(it) }
 
-            Log.i("Room", "insert room: user berhasil terdaftar")
-
-            _loading.value = false
-        } else {
-            _login.value = null
-            Log.i("Room", "insert room: user sudah terdaftar atau gagal")
-
-            _loading.value = false
-        }
+        Log.i("Share Preferences", "insert room: user sudah terdaftar atau gagal")
+        _loading.value = false
     }
 }

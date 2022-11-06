@@ -39,6 +39,21 @@ abstract class BaseActivity<binding : ViewDataBinding> : CoreActivity<binding>()
         }
     }
 
+    fun showDialog(
+        message: CharSequence,
+        drawable: Drawable? = null,
+        title: CharSequence? = "",
+        note: CharSequence? = "",
+        action: (() -> Unit)? = null
+    ) = DialogUtils.showBasicAlertDialog(
+        this,
+        drawable,
+        message,
+        title,
+        note,
+        action
+    )
+
     fun showError(
         exception: Exception?,
         message: CharSequence,

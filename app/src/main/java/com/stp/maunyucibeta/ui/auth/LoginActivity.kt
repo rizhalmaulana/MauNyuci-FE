@@ -1,8 +1,10 @@
 package com.stp.maunyucibeta.ui.auth
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.SpannableStringBuilder
+import android.util.Log
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
@@ -28,82 +30,98 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
         setupObserve()
     }
 
+    @SuppressLint("LogNotTimber")
     private fun ActivityLoginBinding.setupObserve() {
         viewModel.apply {
-            resetState()
+            binding.apply {
+                resetState()
 
-            loading.observe {
-                etEmailLogin.isEnabled = !this
-                etPassLogin.isEnabled = !this
-                if (this) {
-                    btnLogin.visibility = GONE
-                    cvLoginLoading.visibility = VISIBLE
-                } else {
-                    btnLogin.visibility = VISIBLE
-                    cvLoginLoading.visibility = GONE
+                loading.observe {
+                    this?.let {
+                        etEmailLogin.isEnabled = !it
+                        etPassLogin.isEnabled = !it
+                        if (it) {
+                            Log.i("Login", "observe loading: $it")
+
+                            lrProgressbar.visibility = VISIBLE
+                        } else {
+                            Log.i("Login", "observe loading: $it")
+
+                            lrProgressbar.visibility = GONE
+                        }
+                    }
                 }
-            }
 
-            isValid.observe {
-                btnLogin.isEnabled = this
-            }
-
-            hideErrorEmailFormat.observe {
-                when {
-                    this -> txtEmailValidation.visibility = GONE
-                    etEmailLogin.text?.isEmpty() == true -> txtEmailValidation.visibility =
-                        GONE
-                    else -> txtEmailValidation.visibility = VISIBLE
+                isValid.observe {
+                    Log.i("Login", "observe isValid: $this")
+                    this.let {
+                        if (it) {
+                            btnLogin.isEnabled = it
+                            btnLogin.setBackgroundDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.button_gradient))
+                        } else {
+                            btnLogin.isEnabled = it
+                            btnLogin.setBackgroundDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.button_gradient_invalid))
+                        }
+                    }
                 }
-            }
 
-            hideErrorPasswordFormat.observe {
-                when {
-                    this -> txtPasswordValidation.visibility = GONE
-                    etPassLogin.text?.isEmpty() == true -> txtPasswordValidation.visibility =
-                        GONE
-                    else -> txtPasswordValidation.visibility = VISIBLE
+                hideErrorEmailFormat.observe {
+                    when {
+                        this -> txtEmailValidation.visibility = GONE
+                        etEmailLogin.text?.isEmpty() == true -> txtEmailValidation.visibility =
+                            GONE
+                        else -> txtEmailValidation.visibility = VISIBLE
+                    }
                 }
-            }
 
-            message.observe {
-                this.getContentIfNotHandled()?.let {
-                    Toast.makeText(applicationContext, it, Toast.LENGTH_SHORT).show()
+                hideErrorPasswordFormat.observe {
+                    when {
+                        this -> txtPasswordValidation.visibility = GONE
+                        etPassLogin.text?.isEmpty() == true -> txtPasswordValidation.visibility =
+                            GONE
+                        else -> txtPasswordValidation.visibility = VISIBLE
+                    }
                 }
-            }
 
-            error.observe {
-                if (this != null) {
-                    this@LoginActivity.showError(
-                        this,
-                        message ?: errorMessage,
-                        ContextCompat.getDrawable(
+                message.observe {
+                    this.getContentIfNotHandled()?.let {
+                        Toast.makeText(applicationContext, it, Toast.LENGTH_LONG).show()
+                    }
+                }
+
+                error.observe {
+                    if (this != null) {
+                        this@LoginActivity.showError(
+                            this,
+                            message ?: errorMessage,
+                            ContextCompat.getDrawable(
+                                applicationContext,
+                                R.drawable.ic_caution
+                            )
+                        ) {}
+                    }
+                }
+
+                loginError.observe {
+                    if (this != null) {
+                        this@LoginActivity.showError(this, this.toString(),
+                            ContextCompat.getDrawable(
+                                applicationContext,
+                                R.drawable.ic_caution
+                            )
+                        ) {}
+                    }
+                }
+
+                login.observe {
+                    if (this != null) {
+                        Toast.makeText(
                             applicationContext,
-                            R.drawable.ic_caution
-                        )
-                    ) {}
-                }
-            }
-
-            loginError.observe {
-                if (this != null) {
-                    this@LoginActivity.showError(this, this.toString(),
-                        ContextCompat.getDrawable(
-                            applicationContext,
-                            R.drawable.ic_caution
-                        )
-                    ) {}
-                }
-            }
-
-            login.observe {
-                if (this != null) {
-                    Toast.makeText(
-                        applicationContext,
-                        "Selamat Datang " + (this.name),
-                        Toast.LENGTH_LONG
-                    ).show()
-                    moveActivity()
+                            "Selamat Datang " + (this.name),
+                            Toast.LENGTH_LONG
+                        ).show()
+                        moveActivity()
+                    }
                 }
             }
         }

@@ -3,10 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/lr_progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <include layout="@layout/view_alert_dialog_loading" />
+
+        </LinearLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -38,126 +51,134 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/lr_wrapper_et_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/margin_10">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/TextBodyMedium"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_10"
-                        android:layout_marginStart="@dimen/margin_5"
-                        android:text="@string/email_no_hp"
-                        android:textColor="@color/colorBlack" />
+                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/lr_email_login"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/border_default"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:padding="@dimen/margin_10">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/et_email_login"
-                            style="@style/TextMedium"
-                            android:layout_width="0dp"
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextBodyMedium"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/margin_15"
-                            android:layout_weight="1"
-                            android:background="@android:color/transparent"
-                            android:hint="@string/masukkan_email_no_hp"
-                            android:inputType="textAutoCorrect"
-                            android:lines="1"
-                            android:textSize="14sp"
-                            tools:ignore="HardcodedText" />
+                            android:layout_marginStart="@dimen/margin_5"
+                            android:layout_marginBottom="@dimen/margin_10"
+                            android:text="@string/email_no_hp"
+                            android:textColor="@color/colorBlack" />
+
+                        <LinearLayout
+                            android:id="@+id/lr_email_login"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border_default"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_email_login"
+                                style="@style/TextMedium"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:background="@android:color/transparent"
+                                android:hint="@string/masukkan_email_no_hp"
+                                android:inputType="textAutoCorrect"
+                                android:lines="1"
+                                android:textSize="14sp"
+                                tools:ignore="HardcodedText" />
+
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt_email_validation"
+                            style="@style/TextBodyMedium"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_5"
+                            android:layout_marginTop="@dimen/margin_5"
+                            android:text="@string/email_atau_no_hp_anda_tidak_sesuai"
+                            android:textColor="@color/colorDanger"
+                            android:textSize="@dimen/size_text_10"
+                            android:visibility="gone" />
 
                     </LinearLayout>
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/txt_email_validation"
-                        style="@style/TextBodyMedium"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_5"
-                        android:layout_marginStart="@dimen/margin_5"
-                        android:text="@string/email_atau_no_hp_anda_tidak_sesuai"
-                        android:textColor="@color/colorDanger"
-                        android:textSize="@dimen/size_text_10"
-                        android:visibility="gone" />
+                        android:orientation="vertical"
+                        android:padding="@dimen/margin_10">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextBodyMedium"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_5"
+                            android:layout_marginBottom="@dimen/margin_10"
+                            android:text="@string/password"
+                            android:textColor="@color/colorBlack" />
+
+                        <LinearLayout
+                            android:id="@+id/lr_pass_login"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border_default"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_pass_login"
+                                style="@style/TextMedium"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/margin_15"
+                                android:layout_weight="1"
+                                android:background="@android:color/transparent"
+                                android:hint="@string/masukkan_password"
+                                android:inputType="textPassword"
+                                android:lines="1"
+                                android:textSize="14sp" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/iv_pass_toggle"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="16dp"
+                                android:alpha="0.6"
+                                android:contentDescription="@string/todo"
+                                android:src="@drawable/ic_remove_red_eye_black_24dp"
+                                app:tint="@color/colorBlack_main" />
+
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt_password_validation"
+                            style="@style/TextBodyMedium"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_5"
+                            android:layout_marginTop="@dimen/margin_5"
+                            android:text="@string/password_anda_tidak_sesuai"
+                            android:textColor="@color/colorDanger"
+                            android:textSize="@dimen/size_text_10"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/margin_10">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/TextBodyMedium"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_10"
-                        android:layout_marginStart="@dimen/margin_5"
-                        android:text="@string/password"
-                        android:textColor="@color/colorBlack" />
-
-                    <LinearLayout
-                        android:id="@+id/lr_pass_login"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/border_default"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/et_pass_login"
-                            style="@style/TextMedium"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/margin_15"
-                            android:layout_weight="1"
-                            android:background="@android:color/transparent"
-                            android:inputType="textPassword"
-                            android:lines="1"
-                            android:hint="@string/masukkan_password"
-                            android:textSize="14sp" />
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/iv_pass_toggle"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="16dp"
-                            android:alpha="0.6"
-                            android:contentDescription="@string/todo"
-                            android:src="@drawable/ic_remove_red_eye_black_24dp"
-                            app:tint="@color/colorBlack_main" />
-
-                    </LinearLayout>
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/txt_password_validation"
-                        style="@style/TextBodyMedium"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_5"
-                        android:layout_marginStart="@dimen/margin_5"
-                        android:text="@string/password_anda_tidak_sesuai"
-                        android:textColor="@color/colorDanger"
-                        android:textSize="@dimen/size_text_10"
-                        android:visibility="gone" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_marginStart="@dimen/margin_10"
                     android:layout_marginEnd="@dimen/margin_15"
-                    android:layout_marginBottom="@dimen/margin_15">
+                    android:layout_marginBottom="@dimen/margin_15"
+                    android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/TextBodyMedium"
@@ -180,7 +201,7 @@
                         style="@style/ShapeAppearanceOverlay.Material3.Button"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:background="@drawable/button_gradient"
+                        android:background="@drawable/button_gradient_invalid"
                         android:clickable="true"
                         android:focusable="true"
                         android:fontFamily="@font/open_sans_semi_bold"
@@ -219,49 +240,6 @@
                 </LinearLayout>
 
             </LinearLayout>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_login_loading"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
-                android:visibility="gone"
-                app:cardCornerRadius="@dimen/margin_10"
-                android:padding="@dimen/margin_15">
-
-                <LinearLayout
-                    android:id="@+id/lr_progressbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:orientation="vertical"
-                    android:padding="@dimen/margin_20">
-
-                    <com.airbnb.lottie.LottieAnimationView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        app:lottie_autoPlay="true"
-                        app:lottie_loop="true"
-                        app:lottie_rawRes="@raw/loading" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/view_loading_message"
-                        style="@style/TextTitleBold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_10"
-                        android:text="@string/tunggu_sebentar_yaa"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-<!--            <include-->
-<!--                android:id="@+id/view_loading_login"-->
-<!--                layout="@layout/view_loading"-->
-<!--                android:visibility="gone" />-->
 
         </FrameLayout>
 

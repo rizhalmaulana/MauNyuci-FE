@@ -1,10 +1,12 @@
 package com.stp.maunyucibeta.helper
 
-import android.text.TextUtils
-import android.util.Patterns
 import java.util.regex.Pattern
 
 object Static {
+    fun isNumberPhone(target: String): Boolean {
+        return target.matches("^(^\\+62|62|^08)(\\d{3,4}-?){2}\\d{3,4}\$".toRegex())
+    }
+
     fun isValidEmail(target: String): Boolean {
         if (target.isEmpty()) return false
         return Pattern.compile(

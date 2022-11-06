@@ -7,6 +7,7 @@ object Constants {
     const val YA = "YA"
     const val TIDAK = "TIDAK"
     const val SPLASH_SCREEN_DELAY_DURATION = 4000L
+    const val LOGIN_DELAY_DURATION = 2000L
 
     const val WHATS_APP_URL = "https://api.whatsapp.com/send?phone=6289662549895&text="
     const val TEXT_PLAIN = "text/plain"

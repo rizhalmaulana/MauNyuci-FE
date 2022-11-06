@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-
-        <import type="android.view.View" />
-
-        <variable
-            name="viewModelOrder"
-            type="com.stp.maunyucibeta.ui.order.OrderViewModel" />
-    </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swpe_order"
@@ -35,10 +25,11 @@
                     tools:ignore="UselessParent">
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_title_order"
                         style="@style/TextTitleBold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/title_order"
+                        android:text="Title Fragment"
                         android:textColor="@color/colorBlack"
                         android:textSize="18sp" />
 
@@ -64,11 +55,12 @@
                         android:padding="@dimen/margin_10">
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt_body_order"
                             style="@style/TextTitleBold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:text="Body Fragment"
                             android:textAlignment="center"
-                            android:text="Order Fragment"
                             android:textColor="@color/colorBlack"
                             android:textSize="18sp" />
 
